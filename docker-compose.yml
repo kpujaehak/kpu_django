@@ -6,17 +6,19 @@ volumes:
 services:
   db:
     image: postgres
+    container_name: kpu_db
     volumes:
       - postgres_data:/var/lib/postgres/data
     environment:
-      - POSTGRES_DB=djangosample
-      - POSTGRES_USER=sampleuser
-      - POSTGRES_PASSWORD=samplesecret
+      - POSTGRES_DB=kpu_db
+      - POSTGRES_USER=kpu
+      - POSTGRES_PASSWORD=kpu1234
 
   django:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile-dev
+    container_name: kpu_web
     volumes:
       - ./:/app/
     command: ["./manage.py", "runserver", "0:8000"]
@@ -26,4 +28,4 @@ services:
       - db
     restart: always
     ports:
-      - 8000:8000
+      - 5000:8000
