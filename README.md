@@ -1,5 +1,5 @@
 
-1. git clone https://github.com/kpujaehak/kpu_django.git
+1. git clone https://github.com/kpujaehak/kpu_django
 2. cd kpu_django
 3. docker-compose up
 
